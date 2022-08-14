@@ -1,9 +1,6 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-
-const fetchSuperHeroes = () => {
-  return axios.get("http://localhost:4000/superheroes");
-};
+import { useSuperHerosData } from "../hooks/useSuperHerosData";
 
 export const RQSuperHeroesPage = () => {
   const onSuccess = (data) => {
@@ -14,20 +11,10 @@ export const RQSuperHeroesPage = () => {
     console.log("Perform side effect after encountering error", error);
   };
 
-  const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
-    "super-heroes",
-    fetchSuperHeroes,
-    {
-      onSuccess: onSuccess, //onSuccess 만 적어도 됌, 좌우 같아서
-      onError: onError,
-      select: (data) => {
-        const superHeroNames = data.data.map((hero) => hero.name);
-        return superHeroNames;
-      },
-    }
-  );
+  const { isLoading, data, isError, error, isFetching, refetch } =
+    useSuperHerosData(onSuccess, onError);
 
-  if (isLoading || isFetching) {
+  if (isFetching || isLoading) {
     return <h2>Loading...</h2>;
   }
 
@@ -44,7 +31,7 @@ export const RQSuperHeroesPage = () => {
         return <div key={hero.name}>{hero.name}</div>;
       })} */}
       {data.map((heroName) => {
-        return <div key={heroName}>{heroName}</div>
+        return <div key={heroName}>{heroName}</div>;
       })}
     </>
   );
