@@ -20,6 +20,10 @@ export const RQSuperHeroesPage = () => {
     {
       onSuccess: onSuccess, //onSuccess 만 적어도 됌, 좌우 같아서
       onError: onError,
+      select: (data) => {
+        const superHeroNames = data.data.map((hero) => hero.name);
+        return superHeroNames;
+      },
     }
   );
 
@@ -36,8 +40,11 @@ export const RQSuperHeroesPage = () => {
     <>
       <h2>RQ Super Heroes Page</h2>
       <button onClick={refetch}>Fetch heroes</button>
-      {data?.data.map((hero) => {
+      {/* {data?.data.map((hero) => {
         return <div key={hero.name}>{hero.name}</div>;
+      })} */}
+      {data.map((heroName) => {
+        return <div key={heroName}>{heroName}</div>
       })}
     </>
   );
