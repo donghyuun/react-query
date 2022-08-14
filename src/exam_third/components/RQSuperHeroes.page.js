@@ -30,7 +30,7 @@ export const RQSuperHeroesPage = () => {
       {/* {data?.data.map((hero) => {
         return <div key={hero.name}>{hero.name}</div>;
       })} */}
-      {data.map((heroName) => {
+      {data?.map((heroName) => {
         return <div key={heroName}>{heroName}</div>;
       })}
     </>
