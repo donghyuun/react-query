@@ -9,6 +9,7 @@ import Fetch from "./exam_second/Fetch";
 import { HomePage } from "./exam_third/components/Home.page";
 import { SuperHeroesPage } from "./exam_third/components/SuperHeroes.page";
 import { RQSuperHeroesPage } from "./exam_third/components/RQSuperHeroes.page";
+import { RQSuperHeroPage } from "./exam_third/components/RQSuperHero";
 import { Link, Routes, Route } from "react-router-dom";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/super-heroes" element={<SuperHeroesPage />} />
           <Route path="/rq-super-heroes" element={<RQSuperHeroesPage />} />
+          <Route path="/rq-super-heroes/:heroId" element={<RQSuperHeroPage/>}/>
           <Route path="/" element={<HomePage />} />
         </Routes>
         <Setting />
