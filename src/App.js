@@ -11,6 +11,7 @@ import { SuperHeroesPage } from "./exam_third/components/SuperHeroes.page";
 import { RQSuperHeroesPage } from "./exam_third/components/RQSuperHeroes.page";
 import { RQSuperHeroPage } from "./exam_third/components/RQSuperHero";
 import { Link, Routes, Route } from "react-router-dom";
+import { ParallelQueriesPage } from "./exam_third/components/ParallelQueries.page";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/rq-super-heroes" element={<RQSuperHeroesPage />} />
           <Route path="/rq-super-heroes/:heroId" element={<RQSuperHeroPage/>}/>
           <Route path="/" element={<HomePage />} />
+          <Route path="/rq-parallel" element={<ParallelQueriesPage/>}/>
         </Routes>
         <Setting />
         <Profile />
