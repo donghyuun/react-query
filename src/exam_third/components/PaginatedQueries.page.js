@@ -50,7 +50,6 @@ export const PaginatedQueriesPage = () => {
         >
           NEXT
         </button>
-        {console.log(isLoading, isFetching)}
         {isFetching && "Loading" /*문자열보다 이모티콘이 더 나을듯*/}
       </div>
     </>
