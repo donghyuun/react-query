@@ -18,7 +18,8 @@ export const InfiniteQueriesPage = () => {
     isFetchingNextPage,
   } = useInfiniteQuery(["colors"], fetchColors, {
     getNextPageParam: (_lastPage, pages) => {
-        //페이지 증가 역할, pages 인자값으로 getNextPageParam 의 return 값이 들어간다.
+      //페이지 증가 역할, pages 인자값으로 getNextPageParam 의 return 값이 들어간다.
+      //data 에 load more 할때마다 값이 추가되는것임, 전체가 다 새로 로드되는거 아님.
       if (pages.length < 3) {
         return pages.length + 1;
       } else {
@@ -39,10 +40,15 @@ export const InfiniteQueriesPage = () => {
     <>
       <div>
         {data?.pages.map((group, index) => {
+          console.log(group);
           return (
             <div key={index}>
-                {group.data.map((color) => <h2 key={color.id}>{color.id} - {color.label}</h2>)}
-                {/* 이것도 가능, { return <h2 key={color.id}>{color.id} - {color.label}</h2>} */}
+              {group.data.map((color) => (
+                <h2 key={color.id}>
+                  {color.id} - {color.label}
+                </h2>
+              ))}
+              {/* 이것도 가능, { return <h2 key={color.id}>{color.id} - {color.label}</h2>} */}
             </div>
           );
         })}
